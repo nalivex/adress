@@ -15,7 +15,7 @@
     <section class="container-box-secondary">
       <form action="{{ route('address') }}" method="POST" class="form-cep">
         @csrf
-        <input type="text" name="cep" placeholder="Insira o CEP">
+        <input type="text" name="cep" placeholder="Insira o CEP" minlength="8" maxlength="8">
         <input type="submit" value="Enviar">
       </form>
     </section>
@@ -28,7 +28,7 @@
             <h5 class="text-uppercase text-muted ls-1 mb-1">
               CEP
             </h5>
-            <h2 class="mb-0">{{ $address->cep }}</h2>
+            <h2 class="mb-0">{{ empty($address->cep) ? '--' : $address->cep }}</h2>
           </div>
           <div class="datas">
             <h5 class="text-uppercase text-muted ls-1 mb-1">
@@ -53,6 +53,7 @@
     @endif
 
   </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 </body>
 
 </html>
